@@ -1,0 +1,144 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Expo - Netdata</title>
+    <link rel="shortcut icon" href="/../img/favicon32.ico" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        .navbar-inverse .navbar-nav > li > a {
+            color: #fff;
+        }
+
+            .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+                background-color: #3A75D7;
+            }
+
+        .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
+            background-color: #3A75D7;
+        }
+
+        .btn-link {
+            padding: 16px;
+        }
+
+        .li > a {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav style="background: #4285F4;border-color: #1995dc;" class="navbar  navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a style="padding-top: 10px;" class="navbar-brand" href="http://www.netdata.com/">
+                    <img src="Content/images/logofornetsite2.png" alt="Netdata" />
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class=""><a target="_blank" href="http://www.netdata.com/IFRAME/1ee0684b"><span id="netDilVeriGoster">Verileri Göster</span></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="netDilSecim"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a style="cursor:pointer;" onclick="ChangeLang('tr-TR');"><span id="netDilTurkce">Turkish</span></a></li>
+                            <li><a style="cursor:pointer;" onclick="ChangeLang('en-US');"><span id="netDilIngilizce">English</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="height:32px;"><div style="margin-top: 8px;" class="netdata-social-share text-center"></div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div id="namePanel" class="row-fluid" style="margin-top: 50px;">
+            <div class="col-md-6 col-md-offset-3 login-box text-center">
+                <span style="padding: 15px;font-size:18px;white-space:pre-wrap" class="label col-centered">Uygulamayı görmek için bir kullanıcı adı giriniz.</span>
+                <br />
+                <input style="margin-top: 5px;" class="form-control col-centered" type="text" id="nameText" name="MessageText" value="" />
+                <button class="btn btn-success col-centered login-button" type="button" id="nameSetButton">Giriş</button>
+                <label class="alert alert-danger" id="lblUyari" style="margin-top:20px"></label>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; display: none" class="row-fluid" id="MessagingPanel">
+            <div class="col-md-10 col-md-offset-1">
+                <div id="userList" class="col-md-3">
+                    <div style="display: none" id="connectedAlert" class="alert alert-success" role="alert">Bağlandı!</div>
+                    <div style="display: none" id="disconnectedAlert" class="alert alert-danger" role="alert">Bağlanamadı!</div>
+                    <div class="panel panel-success" style="border-color: #3F51B5;">
+                        <div class="panel-heading" style="background-color: #3F51B5; border-color: #3F51B5; color: #d6e9c6">
+                            <h2 class="panel-title text-center">Kullanıcılar</h2>
+                        </div>
+                        <div class="panel-body" style="padding:0">
+                            <div id="userArea" style="height:50%;margin-bottom:0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="well col-md-12" style='overflow-y: hidden; height: 60%; padding: 10px; border: 1px solid #E7E7A8;' id="messageArea"></div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="messageText" name="MessageText" placeholder="Mesajınızı giriniz." value="" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" id="sendButton" style="padding: 10px; background-color: #3F51B5"><i class="fa fa-arrow-right"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<footer class="footer navbar-fixed-bottom">
+        <div class="container text-center" style="padding-top:5px">
+            <a style="text-decoration:none !important;margin-right:10px" target="_blank" href="http://www.netdata.com/">
+                <img src="Content/images/logofornetsite.png" />
+            </a>
+            <a target="_blank" href="http://www.netdata.com/IFRAME/1ee0684b" class="btn btn-primary">Verileri Göster</a>
+        </div>
+    </footer>-->
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/NetdataSocketIOScripts.js"></script>
+    <script src="Scripts/ChatApplication.js"></script>
+    <script src="Scripts/jquery.nicescroll.min.js"></script>
+    <script src="Scripts/Sharer.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#lblUyari").hide();
+            $("#userArea").niceScroll();
+            $("#messageArea").niceScroll();
+        });
+        $("#messageText").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#sendButton").click();
+            }
+        });
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-66551872-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
