@@ -10,6 +10,19 @@ Netdata üzerinden veri çekme
 =============
 Netdata size birden fazla veri çekme yöntemi sunmaktadır. XML,JSON,SOAP Webservice ve IFRAME size sunduğumuz veri çekme yöntemleridir. Ayrıca verilerinizi URL bazlı filtreleme yaparak dilediğiniz sql sorgularını yazabilir ve sorgu sonucu üretilen verileri uygulamanızda kullanabilirsiniz. Nerede Ne Var uygulaması için Main.aspx ve Admin.aspx sayfalarında XML türünden veriler çektik. Eğer bir projeniz varsa ve dışardan erişime açtıysanız tek yapmanız gereken uygun veri çekme formatını seçmek.
 
-SocketId ile Projeye Veri Ekleme / Silme / Güncelleme - Yazılacak
+BAĞLANTININ KURULMASI
 =============
-Netdata'nın sizlere sunduğu çözümlerden bir taneside AccPo ile verilerinizi dışardan göndereceğiniz bir WebRequest ile değiştirebilmektir. [Burada](https://github.com/netdata-admin/YoutubeTrends/wiki) AccPo'nun örnek kullanımı yer almaktadır.
+Bağlantının kurulması için öncelikle global olarak socket isminde (veya istenilen bir isimde ) bir nesne oluşturulmalıdır. Nesnenin global olarak oluşturulmasının sebebi bu nesne ile hem veri alacağız hem de veri göndereceğiz ve veri gönderme işlemi farklı fonksiyonlar tarafından da yapılabileceği için socket nesnesi global tanımlanmalıdır.
+Daha sonra connecttoStarttonet fonksiyonuna benzer bir fonksiyon hazırlanmalıdır. Bu fonksiyonda socket = io.connect("http://www.starttonet.com:8888"); komutuyla Starttonet sunucusuna bağlantı başlatılır. Daha sonra socket.on() ile başlayan tüm fonsiyonlar başlangıçta oluşturulan connectoStarttonet fonksiyonu içerisinde yazılmalıdır.
+var socket = null;
+
+    function connectoStarttonet(apiKey,socketName) {
+        if (socket == null) {
+            socket = io.connect("http://www.starttonet.com:8888");
+           //socket.on() fonksiyonları bu kısıma yazılmalı
+        }
+       else{
+           alert(“Bağlantı daha önce kurulmuş”);
+       }
+    }
+                
