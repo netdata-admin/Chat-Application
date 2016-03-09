@@ -10,7 +10,7 @@ Netdata üzerinden veri çekme
 =============
 Netdata size birden fazla veri çekme yöntemi sunmaktadır. XML,JSON,SOAP Webservice ve IFRAME size sunduğumuz veri çekme yöntemleridir. Ayrıca verilerinizi URL bazlı filtreleme yaparak dilediğiniz sql sorgularını yazabilir ve sorgu sonucu üretilen verileri uygulamanızda kullanabilirsiniz. Nerede Ne Var uygulaması için Main.aspx ve Admin.aspx sayfalarında XML türünden veriler çektik. Eğer bir projeniz varsa ve dışardan erişime açtıysanız tek yapmanız gereken uygun veri çekme formatını seçmek.
 
-BAĞLANTININ KURULMASI
+Bağlantının Kurulması
 =============
 Bağlantının kurulması için öncelikle global olarak socket isminde (veya istenilen bir isimde ) bir nesne oluşturulmalıdır. Nesnenin global olarak oluşturulmasının sebebi bu nesne ile hem veri alacağız hem de veri göndereceğiz ve veri gönderme işlemi farklı fonksiyonlar tarafından da yapılabileceği için socket nesnesi global tanımlanmalıdır.
 Daha sonra connecttoNetdataSocketIO  fonksiyonuna benzer bir fonksiyon hazırlanmalıdır. Bu fonksiyonda socket = io.connect("http://www.netdata.com:8888"); komutuyla Netdata sunucusuna bağlantı başlatılır. Daha sonra socket.on() ile başlayan tüm fonsiyonlar başlangıçta oluşturulan connecttoNetdataSocketIO  fonksiyonu içerisinde yazılmalıdır.
