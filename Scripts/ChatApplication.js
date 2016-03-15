@@ -1,4 +1,4 @@
-﻿var apiKey = '8129de73';
+﻿var apiKey = '*IoT Apikeyini giriniz*';
 var name = "not_set";
 function connect(socketName) {
     console.log("Trying to connect netdata server with apiKey:" + apiKey);
